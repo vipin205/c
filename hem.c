@@ -1,435 +1,114 @@
-1. Sum of Array Elementsc
-#include <stdio.h>
+# 1. Write a Python program to define a function that accepts two numbers and returns their addition, subtraction, and multiplication as multiple returned values.
+def calculate(a, b):
+    addition = a + b
+    subtraction = a - b
+    multiplication = a * b
 
-int main() {
-    int n, sum = 0;
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
-    int arr[n];
-    printf("Enter %d elements: ", n);
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-        sum += arr[i];
-    }
-    printf("Sum = %d\n", sum);
-    return 0;
-}
-2. Insert an Element at a Specified Positionc
-#include <stdio.h>
+    return addition, subtraction, multiplication
 
-int main() {
-    int n, pos, element;
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
-    int arr[n + 1];
-    printf("Enter elements: ");
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-    printf("Enter position (0 to %d) and element: ", n);
-    scanf("%d %d", &pos, &element);
-    printf("Before insertion: ");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-    for (int i = n; i > pos; i--) {
-        arr[i] = arr[i - 1];
-    }
-    arr[pos] = element;
-    printf("After insertion: ");
-    for (int i = 0; i <= n; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-    return 0;
-}
-.3. Delete an Element from a Specified Positionc
-#include <stdio.h>
 
-int main() {
-    int n, pos;
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
-    int arr[n];
-    printf("Enter elements: ");
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-    printf("Enter position to delete (0 to %d): ", n - 1);
-    scanf("%d", &pos);
-    printf("Before deletion: ");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-    for (int i = pos; i < n - 1; i++) {
-        arr[i] = arr[i + 1];
-    }
-    printf("After deletion: ");
-    for (int i = 0; i < n - 1; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-    return 0;
-}
-4. Linear Searchc
-#include <stdio.h>
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
 
-int main() {
-    int n, key, found = 0;
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
-    int arr[n];
-    printf("Enter elements: ");
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-    printf("Enter element to search: ");
-    scanf("%d", &key);
-    for (int i = 0; i < n; i++) {
-        if (arr[i] == key) {
-            printf("Element found at position %d\n", i);
-            found = 1;
-            break;
-        }
-    }
-    if (!found) {
-        printf("Element not found\n");
-    }
-    return 0;
-}
-5. Sort an Array in Ascending Orderc
-#include <stdio.h>
+add, sub, mul = calculate(a, b)
 
-int main() {
-    int n, temp;
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
-    int arr[n];
-    printf("Enter elements: ");
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-    printf("Before sorting: ");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-        }
-    }
-    printf("After sorting: ");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-    return 0;
-}
-.6. Element-wise Sum and Difference of Matricesc
-#include <stdio.h>
+print("Addition =", add)
+print("Subtraction =", sub)
+print("Multiplication =", mul)
+# 2. Create a program demonstrating function calls with positional arguments, keyword arguments (name="Sagar", marks=59.53), and default parameter values (b=10).
+def display(name, marks=50):
+    print("Name =", name)
+    print("Marks =", marks)
 
-int main() {
-    int r, c;
-    printf("Enter rows and columns: ");
-    scanf("%d %d", &r, &c);
-    int a[r][c], b[r][c], sum[r][c], diff[r][c];
-    printf("Enter Matrix A:\n");
-    for (int i = 0; i < r; i++) {
-        for (int j = 0; j < c; j++) {
-            scanf("%d", &a[i][j]);
-        }
-    }
-    printf("Enter Matrix B:\n");
-    for (int i = 0; i < r; i++) {
-        for (int j = 0; j < c; j++) {
-            scanf("%d", &b[i][j]);
-        }
-    }
-    for (int i = 0; i < r; i++) {
-        for (int j = 0; j < c; j++) {
-            sum[i][j] = a[i][j] + b[i][j];
-            diff[i][j] = a[i][j] - b[i][j];
-        }
-    }
-    printf("Sum Matrix:\n");
-    for (int i = 0; i < r; i++) {
-        for (int j = 0; j < c; j++) {
-            printf("%d\t", sum[i][j]);
-        }
-        printf("\n");
-    }
-    printf("Difference Matrix:\n");
-    for (int i = 0; i < r; i++) {
-        for (int j = 0; j < c; j++) {
-            printf("%d\t", diff[i][j]);
-        }
-        printf("\n");
-    }
-    return 0;
-}
-7. Matrix Multiplicationc
-#include <stdio.h>
 
-int main() {
-    int r1, c1, r2, c2;
-    printf("Enter rows and columns of Matrix A: ");
-    scanf("%d %d", &r1, &c1);
-    printf("Enter rows and columns of Matrix B: ");
-    scanf("%d %d", &r2, &c2);
-    if (c1 != r2) {
-        printf("Multiplication not possible\n");
-        return 0;
-    }
-    int a[r1][c1], b[r2][c2], mul[r1][c2];
-    printf("Enter Matrix A:\n");
-    for (int i = 0; i < r1; i++) {
-        for (int j = 0; j < c1; j++) {
-            scanf("%d", &a[i][j]);
-        }
-    }
-    printf("Enter Matrix B:\n");
-    for (int i = 0; i < r2; i++) {
-        for (int j = 0; j < c2; j++) {
-            scanf("%d", &b[i][j]);
-        }
-    }
-    for (int i = 0; i < r1; i++) {
-        for (int j = 0; j < c2; j++) {
-            mul[i][j] = 0;
-            for (int k = 0; k < c1; k++) {
-                mul[i][j] += a[i][k] * b[k][j];
-            }
-        }
-    }
-    printf("Result Matrix:\n");
-    for (int i = 0; i < r1; i++) {
-        for (int j = 0; j < c2; j++) {
-            printf("%d\t", mul[i][j]);
-        }
-        printf("\n");
-    }
-    return 0;
-}
-8. Pointers with Arraysc
-#include <stdio.h>
+display("Rahul", 80)
 
-int main() {
-    int n;
-    printf("Enter number of elements: ");
-    scanf("%d", &n);
-    int arr[n];
-    int *ptr = arr;
-    printf("Enter elements: ");
-    for (int i = 0; i < n; i++) {
-        scanf("%d", ptr + i);
-    }
-    printf("Element\tAddress\n");
-    for (int i = 0; i < n; i++) {
-        printf("%d\t%p\n", *(ptr + i), (void*)(ptr + i));
-    }
-    return 0;
-}
-9. Student Information Structurec
-#include <stdio.h>
+display(name="Sagar", marks=59.53)
 
-struct Student {
-    int roll_no;
-    char name[50];
-    float marks;
-};
+display("Amit")
+# 3. Write a Python function using variable-length arguments (*args) to calculate the total sum of an arbitrary number of numerical inputs passed during a function call.
+def total_sum(*args):
+    total = 0
 
-int main() {
-    struct Student s;
-    printf("Enter roll number: ");
-    scanf("%d", &s.roll_no);
-    printf("Enter name: ");
-    scanf("%s", s.name);
-    printf("Enter marks: ");
-    scanf("%f", &s.marks);
-    printf("\nStudent Details:\n");
-    printf("Roll Number: %d\n", s.roll_no);
-    printf("Name: %s\n", s.name);
-    printf("Marks: %.2f\n", s.marks);
-    return 0;
-}
-10. Stack Implementation (Array)c
-#include <stdio.h>
-#define SIZE 5
+    for num in args:
+        total = total + num
 
-int stack[SIZE];
-int top = -1;
+    return total
 
-void push() {
-    int value;
-    if (top == SIZE - 1) {
-        printf("Stack Overflow\n");
-    } else {
-        printf("Enter value to push: ");
-        scanf("%d", &value);
-        top++;
-        stack[top] = value;
-    }
-}
 
-void pop() {
-    if (top == -1) {
-        printf("Stack Underflow\n");
-    } else {
-        printf("Popped element: %d\n", stack[top]);
-        top--;
-    }
-}
+result = total_sum(10, 20, 30, 40, 50)
 
-void peek() {
-    if (top == -1) {
-        printf("Stack is empty\n");
-    } else {
-        printf("Top element: %d\n", stack[top]);
-    }
-}
+print("Total sum =", result)
+# 4. Implement a function using **kwargs that accepts variable keyword-value pairs and iterates through them to display key-value pairs.
+def display(**kwargs):
+    for key, value in kwargs.items():
+        print(key, "=", value)
 
-void display() {
-    if (top == -1) {
-        printf("Stack is empty\n");
-    } else {
-        for (int i = top; i >= 0; i--) {
-            printf("%d ", stack[i]);
-        }
-        printf("\n");
-    }
-}
 
-int main() {
-    int choice;
-    while (1) {
-        printf("1.Push 2.Pop 3.Peek 4.Display 5.Exit: ");
-        scanf("%d", &choice);
-        if (choice == 1) push();
-        else if (choice == 2) pop();
-        else if (choice == 3) peek();
-        else if (choice == 4) display();
-        else break;
-    }
-    return 0;
-}
-11. Queue Implementation (Array)c#include <stdio.h>
-#define SIZE 5
+display(name="Sagar", age=21, course="MCA", marks=85)
+# 5. Write a program that reads space-separated numerical input into a list, passes the list to a function, and calculates both the sum and average of the elements.
+def calculate(numbers):
+    total = sum(numbers)
+    average = total / len(numbers)
 
-int queue[SIZE];
-int front = -1, rear = -1;
+    return total, average
 
-void enqueue() {
-    int value;
-    if (rear == SIZE - 1) {
-        printf("Queue Overflow\n");
-    } else {
-        printf("Enter value to enqueue: ");
-        scanf("%d", &value);
-        if (front == -1) front = 0;
-        rear++;
-        queue[rear] = value;
-    }
-}
 
-void dequeue() {
-    if (front == -1 || front > rear) {
-        printf("Queue Underflow\n");
-    } else {
-        printf("Dequeued element: %d\n", queue[front]);
-        front++;
-        if (front > rear) {
-            front = rear = -1;
-        }
-    }
-}
+numbers = list(map(float, input("Enter numbers: ").split()))
 
-void peek() {
-    if (front == -1 || front > rear) {
-        printf("Queue is empty\n");
-    } else {
-        printf("Front element: %d\n", queue[front]);
-    }
-}
+total, average = calculate(numbers)
 
-void display() {
-    if (front == -1 || front > rear) {
-        printf("Queue is empty\n");
-    } else {
-        for (int i = front; i <= rear; i++) {
-            printf("%d ", queue[i]);
-        }
-        printf("\n");
-    }
-}
+print("Sum =", total)
+print("Average =", average)
+# 6. Construct a Python program utilizing list comprehension to iterate through a range of numbers and construct a list consisting only of even values.
+numbers = [x for x in range(1, 21) if x % 2 == 0]
 
-int main() {
-    int choice;
-    while (1) {
-        printf("1.Enqueue 2.Dequeue 3.Peek 4.Display 5.Exit: ");
-        scanf("%d", &choice);
-        if (choice == 1) enqueue();
-        else if (choice == 2) dequeue();
-        else if (choice == 3) peek();
-        else if (choice == 4) display();
-        else break;
-    }
-    return 0;
-}
-12. Infix to Postfix Conversion Using Stackc
-#include <stdio.h>
-#include <ctype.h>
+print("Even numbers:", numbers)
+# 7. Write a recursive function factorial(n) that calls itself to compute the factorial of a non-negative integer n.
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
 
-char stack[100];
-int top = -1;
 
-void push(char c) {
-    stack[++top] = c;
-}
+n = int(input("Enter a non-negative integer: "))
 
-char pop() {
-    if (top == -1) return -1;
-    return stack[top--];
-}
+if n < 0:
+    print("Factorial is not defined for negative numbers")
+else:
+    print("Factorial =", factorial(n))
+# 8. Write a program using an anonymous lambda function along with Python's built-in filter() to extract even numbers from a given list.
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-int precedence(char c) {
-    if (c == '(') return 0;
-    if (c == '+' || c == '-') return 1;
-    if (c == '*' || c == '/') return 2;
-    return 0;
-}
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
 
-int main() {
-    char infix[100], x;
-    printf("Enter infix expression: ");
-    scanf("%s", infix);
-    int i = 0;
-    while (infix[i] != '\0') {
-        if (isalnum(infix[i])) {
-            printf("%c", infix[i]);
-        } else if (infix[i] == '(') {
-            push(infix[i]);
-        } else if (infix[i] == ')') {
-            while ((x = pop()) != '(') {
-                printf("%c", x);
-            }
-        } else {
-            while (top != -1 && precedence(stack[top]) >= precedence(infix[i])) {
-                printf("%c", pop());
-            }
-            push(infix[i]);
-        }
-        i++;
-    }
-    while (top != -1) {
-        printf("%c", pop());
-    }
-    printf("\n");
-    return 0;
-}
+print("Even numbers:", even_numbers)
+# 9. Demonstrate higher-order functions by using map() with lambda to compute the square of each list item, and reduce() from functools to calculate the cumulative product of the list.
+from functools import reduce
+
+numbers = [1, 2, 3, 4, 5]
+
+squares = list(map(lambda x: x * x, numbers))
+
+product = reduce(lambda x, y: x * y, numbers)
+
+print("Original list:", numbers)
+print("Squares:", squares)
+print("Cumulative product:", product)
+# 10. Write a Python function using variable-length positional arguments (*args) to compute the L₂ norm (Euclidean length) of an arbitrary n-dimensional coordinate vector {v} = (v₁, v₂, ..., vₙ) calculated as:
+# $$ \|v\|_2 = \sqrt{\sum_{i=1}^{n}v_i^2} $$
+import math
+
+def l2_norm(*args):
+    total = 0
+
+    for value in args:
+        total = total + value ** 2
+
+    return math.sqrt(total)
+
+
+result = l2_norm(3, 4)
+
+print("L2 Norm =", result)
